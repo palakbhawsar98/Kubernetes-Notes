@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: fitnessapp
+    env: prod
+spec:
+  template:
+
+    metadata:
+     name: fitnessapp-pod
+     labels:
+        app: fitnessapp
+        type: database
+    spec:      
+      containers:
+      - name: mysql-container
+        image: mysql
+      - name: tomcat-container
+        image: tomcat    
+  replicas: 3  
+  selector:
+    matchLabels:
+       env: prod
+
