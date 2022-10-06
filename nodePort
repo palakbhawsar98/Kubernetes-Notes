@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: fitnessapp
+    env: prod
+spec:
+  type: NodePort
+  ports:
+   - targetPort: 80
+     port: 80
+     nodePort: 30008
+  selector:
+    app: fitnessapp
+    type: database  
+
+   
